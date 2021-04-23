@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Data Science in Julia for Hackers</title>
+  <meta name="description" content="Data Science in Julia for Hackers" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Data Science in Julia for Hackers" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Data Science in Julia for Hackers" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Data Science in Julia for Hackers" />
+  
+  <meta name="twitter:description" content="Data Science in Julia for Hackers" />
+  
+
+<meta name="author" content="Lambdaclass" />
+
+
+<meta name="date" content="2021-04-22" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="meeting-julia.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Data Science in Julia for Hackers</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i>Introduction</a>
+<ul>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#open-source"><i class="fa fa-check"></i>Open source</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#prologue"><i class="fa fa-check"></i>Prologue</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="meeting-julia.html"><a href="meeting-julia.html"><i class="fa fa-check"></i><b>1</b> Meeting Julia</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="meeting-julia.html"><a href="meeting-julia.html#why-julia"><i class="fa fa-check"></i><b>1.1</b> Why Julia</a></li>
+<li class="chapter" data-level="1.2" data-path="meeting-julia.html"><a href="meeting-julia.html#julia-presentation"><i class="fa fa-check"></i><b>1.2</b> Julia presentation</a></li>
+<li class="chapter" data-level="1.3" data-path="meeting-julia.html"><a href="meeting-julia.html#installation"><i class="fa fa-check"></i><b>1.3</b> Installation</a></li>
+<li class="chapter" data-level="1.4" data-path="meeting-julia.html"><a href="meeting-julia.html#first-steps-into-the-julia-world"><i class="fa fa-check"></i><b>1.4</b> First steps into the Julia world</a></li>
+<li class="chapter" data-level="1.5" data-path="meeting-julia.html"><a href="meeting-julia.html#julias-ecosystem-basic-plotting-and-manipulation-of-dataframes"><i class="fa fa-check"></i><b>1.5</b> Julia’s Ecosystem: Basic plotting and manipulation of DataFrames</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="meeting-julia.html"><a href="meeting-julia.html#plotting-with-plots.jl"><i class="fa fa-check"></i><b>1.5.1</b> Plotting with Plots.jl</a></li>
+<li class="chapter" data-level="1.5.2" data-path="meeting-julia.html"><a href="meeting-julia.html#introducing-dataframes.jl"><i class="fa fa-check"></i><b>1.5.2</b> Introducing DataFrames.jl</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="meeting-julia.html"><a href="meeting-julia.html#summary"><i class="fa fa-check"></i><b>1.6</b> Summary</a></li>
+<li class="chapter" data-level="1.7" data-path="meeting-julia.html"><a href="meeting-julia.html#references"><i class="fa fa-check"></i><b>1.7</b> References</a></li>
+<li class="chapter" data-level="1.8" data-path="meeting-julia.html"><a href="meeting-julia.html#give-us-feedback"><i class="fa fa-check"></i><b>1.8</b> Give us feedback</a></li>
+</ul></li>
+<li class="part"><span><b>I Bayesian Statistics</b></span></li>
+<li class="chapter" data-level="2" data-path="probability-introduction.html"><a href="probability-introduction.html"><i class="fa fa-check"></i><b>2</b> Probability introduction</a></li>
+<li class="chapter" data-level="3" data-path="spam-filter.html"><a href="spam-filter.html"><i class="fa fa-check"></i><b>3</b> Spam filter</a></li>
+<li class="chapter" data-level="4" data-path="probabilistic-programming.html"><a href="probabilistic-programming.html"><i class="fa fa-check"></i><b>4</b> Probabilistic programming</a></li>
+<li class="chapter" data-level="5" data-path="escaping-from-mars.html"><a href="escaping-from-mars.html"><i class="fa fa-check"></i><b>5</b> Escaping from Mars</a></li>
+<li class="chapter" data-level="6" data-path="football-simulation.html"><a href="football-simulation.html"><i class="fa fa-check"></i><b>6</b> Football simulation</a></li>
+<li class="chapter" data-level="7" data-path="basketball-shots.html"><a href="basketball-shots.html"><i class="fa fa-check"></i><b>7</b> Basketball shots</a></li>
+<li class="chapter" data-level="8" data-path="optimal-pricing.html"><a href="optimal-pricing.html"><i class="fa fa-check"></i><b>8</b> Optimal pricing</a></li>
+<li class="part"><span><b>II Deep Learning</b></span></li>
+<li class="chapter" data-level="9" data-path="image-classification.html"><a href="image-classification.html"><i class="fa fa-check"></i><b>9</b> Image classification</a></li>
+<li class="part"><span><b>III Scientific Machine Learning</b></span></li>
+<li class="chapter" data-level="10" data-path="ultima-online.html"><a href="ultima-online.html"><i class="fa fa-check"></i><b>10</b> Ultima online</a></li>
+<li class="chapter" data-level="11" data-path="ultima-continued.html"><a href="ultima-continued.html"><i class="fa fa-check"></i><b>11</b> Ultima continued</a></li>
+<li class="chapter" data-level="12" data-path="time-series.html"><a href="time-series.html"><i class="fa fa-check"></i><b>12</b> Time series</a></li>
+<li class="part"><span><b>IV Epilogue</b></span></li>
+<li class="chapter" data-level="" data-path="epilogue.html"><a href="epilogue.html"><i class="fa fa-check"></i>Epilogue</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/pefontana/ds-in-bookdowm" target="blank">Data Science in Julia for Hackers</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Science in Julia for Hackers</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Data Science in Julia for Hackers</h1>
+<p class="author"><em>Lambdaclass</em></p>
+<p class="date"><em>2021-04-22</em></p>
+</div>
+<div id="introduction" class="section level1 unnumbered">
+<h1>Introduction</h1>
+<div id="open-source" class="section level2 unnumbered">
+<h2>Open source</h2>
+<p><em>This book is currently in a beta version. We are looking forward to getting feedback and criticism:</em>
+* <em>Submit a GitHub issue <strong><a href="https://github.com/unbalancedparentheses/data_science_in_julia_for_hackers/issues">here</a></strong></em>
+* <em>Mail us to <strong><a href="mailto:martina.cantaro@lambdaclass.com" class="email">martina.cantaro@lambdaclass.com</a></strong></em></p>
+<p><em>Thank you!</em></p>
+<p>There are 2 ways in which you can read this book:
+1. In our web page <a href="https://datasciencejuliahackers.com/" class="uri">https://datasciencejuliahackers.com/</a>
+1. If you prefer a dynamic version of the book, you can download the repo in <a href="https://github.com/unbalancedparentheses/data_science_in_julia_for_hackers">GitHub</a> and run the .jl files in a Pluto notebook</p>
+<p><em>The pdf version of the book will be available in a few weeks</em></p>
+<div class="figure">
+<img src="images/bayes-hacker.png" alt="" />
+<p class="caption">Bayes hacking</p>
+</div>
+</div>
+<div id="prologue" class="section level2 unnumbered">
+<h2>Prologue</h2>
+<p>This book is written by Federico Carrone, Herman Obst Demaestri and Mariano Nicolini.</p>
+<p>Thanks to Martina Cantaro, Camilo Plata, Manuel Puebla, Lucas Raúl Fernandez Piana, Osvaldo Martin, Iñaki Garay and Mariana Vinyolas.</p>
+<table style="width:6%;">
+<colgroup>
+<col width="5%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>&gt;<em>We have a habit in writing articles published in scientific journals to make the work as finished as possible, to cover up all the tracks, to not worry about the blind alleys or describe how you had the wrong idea first, and so on</em> - <strong>Richard Feynman</strong></td>
+</tr>
+<tr class="even">
+<td>&gt;<em>Only that what’s open can be true. Full transparency is best for me and you</em> - <strong>OpenBSD</strong></td>
+</tr>
+<tr class="odd">
+<td>One of the first things to note about this book is that it is not an academic textbook. The authors of this book are not academics but a multidisciplinary team of passionate, amateur practitioners from different backgrounds, namely Engineering, Computer Science, Physics and Economy, that found a common ground to write this book, and that day by day keep reading, learning and applying new approaches, technologies and ways of thinking.
+This book lies somewhere in between a methodological recipe and a theoretical intensive textbook. What we want to deliver is a mathematical and computational methodology to face concrete Data Science problems, that is, applying theory and science to real-world problems involving data. The relationship between theory and practice is complex. Considering them as a whole can take us much farther. These pages may offer the theorist a way to think about problematic situations in a more down to earth manner, and to the practitioner, stimulation to go beyond the mere application of programming libraries and tools.</td>
+</tr>
+<tr class="even">
+<td>As the name of the book states, this is a book for Hackers. The term can have opposite connotations, depending on who is pronouncing it and to whom it refers to.
+In media and pop culture, it is associated with cyber-criminals, people that use computers and technology with malicious intent. In the cyber-security domain, hackers are, as stated in the final chapter of <em>Hacking: The Art of Exploitation</em> by Jon Erickson, “…just people with innovative spirits and an in-depth knowledge of technology.” But the definition we like the most is borrowed from <a href="http://www.catb.org/jargon/html/index.html">The Jargon File’s</a> glossary, written by Eric S. Raymond,
+&gt; “A person who delights in having an intimate understanding of the internal workings of a system, computers and computer networks in particular.”</td>
+</tr>
+<tr class="odd">
+<td>It is in this sense that this book is meant for hackers: it will lead you down a road with a results-driven perspective, slowly growing intuition about the inner workings of many problems involving data and what they all have in common, with an emphasis on application.
+The name of the book is also inspired by the great <a href="http://camdavidsonpilon.github.io/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers/">Bayesian Methods for Hackers</a>, which had a big influence on the topics and the approach of this book.</td>
+</tr>
+<tr class="even">
+<td>The situations presented in the book are diverse, reflecting the broad spectrum of application of Data Science. The solutions, however, don’t try to be beautiful or perfect. We know the path to resolving real-life problems is muddy, that sometimes you might feel lost and that your ideas may change as you try to find the solution, but we encourage to embrace these coarse features and accept the sharp corners in this learning-through-solving journey. Suggestions, criticism and feedback are very appreciated, this book is alive and will evolve as a consequence of its environment’s response.</td>
+</tr>
+<tr class="odd">
+<td>Although this book isn’t intended to have obscure, overly technical or academic definitions that may put the reader off, people with a little programming knowledge, a basic understanding of Calculus and some modelling intuition will get the most out of these pages. Familiarity with a high-level language like Python, taking derivatives and some function analysis should be enough for the reader to follow through with the book.
+All chapters include the code for the reader to play, explore and implement the solutions on their own. Moreover, links to notebooks with the worked solutions are available.</td>
+</tr>
+<tr class="even">
+<td>Why Data Science in Julia? There are several reasons why Julia is great language for Data Science. Julia code is readable, specially in regards to math-related computations. Julia is designed for math from the ground up, and considering the great amounts of math involved in Data Science, this makes it a very convenient programming language to work with.
+Another interesting aspect of Julia is its syncretism. This is due to its historical background: it was developed by a team of scientists who wanted a tool to address problems they typically encountered while doing research. Often, scientists are faced with complicated situations that need to integrate various tools and find an equilibrium point among many requirements, like learning to program in a new language and to efficiently use the equipment and hardware available. Julia is the perfect tool for these needs, suited for implementing high-level solutions than can be tested easily and quickly in an interactive manner, and allowing to write highly performant code in a simple way when needed, all in the same language. Moreover, features like multiple-dispatch and simple syntax, allow for great composability between packages as well as scalability, making the task of writing software much more user friendly and maintainable.</td>
+</tr>
+<tr class="odd">
+<td>## Table of contents {.unnumbered}</td>
+</tr>
+<tr class="even">
+<td>### Part I: Data Science and Julia {.unnumbered}
+* <a href="https://datasciencejuliahackers.com/01_science_technology_and_epistemology.jl.html">First chapter</a>: Science, technology, models and epistemology.</td>
+</tr>
+<tr class="odd">
+<td>* <a href="https://datasciencejuliahackers.com/02_julia_intro.jl.html">Second chapter</a>:
+Introduction to the Julia programming language, showing examples of code and some first steps.</td>
+</tr>
+<tr class="even">
+<td>### Part II: Bayesian Statistics {.unnumbered}
+* <a href="https://datasciencejuliahackers.com/03_probability_intro.jl.html">Third chapter</a>: An introduction to probability, probability distributions and Bayes’ interpretation.</td>
+</tr>
+<tr class="odd">
+<td>* <a href="https://datasciencejuliahackers.com/04_naive_bayes.jl.html">Fourth chapter</a>: Using a Naive-Bayes approach we construct a simple spam email filter.</td>
+</tr>
+<tr class="even">
+<td>* <a href="https://datasciencejuliahackers.com/05_prob_prog_intro.jl.html">Fifth chapter</a>: An introduction to Probabilistic Programming and some simple examples using the Turing.jl package.</td>
+</tr>
+<tr class="odd">
+<td>* <a href="https://datasciencejuliahackers.com/06_gravity.jl.html">Sixth chapter</a>: We estimate the gravity of Mars to compute the escape velocity, throwing stones and taking very simple measurements from it.</td>
+</tr>
+<tr class="even">
+<td>* <a href="https://datasciencejuliahackers.com/07_football_simulation.jl.html">Seventh chapter</a>: We use a hierarchical bayesian model to estimate latent variables that describe Premier League´s football teams.</td>
+</tr>
+<tr class="odd">
+<td>* <a href="https://datasciencejuliahackers.com/08_basketball_shots.jl.html">Eighth chapter</a>: We analyze how the scoring probability is affected by some variables, such as the distance from the hoop and the angle of shooting.</td>
+</tr>
+<tr class="even">
+<td>* <a href="https://datasciencejuliahackers.com/09_optimal_pricing.jl.html">Ninth chapter</a>: We solve a problem of optimal pricing optimization using a bayesian point of view.</td>
+</tr>
+<tr class="odd">
+<td>### Part III: Machine Learning {.unnumbered}
+* Work in progress</td>
+</tr>
+<tr class="even">
+<td>### Part IV: Deep Learning {.unnumbered}
+* <a href="https://datasciencejuliahackers.com/10_bees_vs_wasps.jl.html">Tenth chapter</a>: Overview of Machine Learning and implementation of a simple convolutional neural network that is able to discriminate between pictures of bees and wasps.</td>
+</tr>
+<tr class="odd">
+<td>### Part V: Scientific Machine Learning {.unnumbered}
+* <a href="https://datasciencejuliahackers.com/11_ultima_online.jl.html">Eleventh chapter</a>: We explain the Ultima Online Catastrophe using differential equations to build a population dynamics model.</td>
+</tr>
+<tr class="even">
+<td>* <a href="https://datasciencejuliahackers.com/12_ultima_continued.jl.html">Twelfth chapter</a>: A continuation of the Ultima Online Catastrophe, introducing the Universal Differential Equations to recover missing parts of scientific models.</td>
+</tr>
+<tr class="odd">
+<td>### Part VI: Time Series and Forecasting {.unnumbered}
+* <a href="https://datasciencejuliahackers.com/13_time_series.jl.html">Thirteenth chapter</a>: We lay the foundations for time series analysis, focusing on the exponential smoothing method.</td>
+</tr>
+<tr class="even">
+<td><!--chapter:end:index.Rmd--></td>
+</tr>
+<tr class="odd">
+<td># (PART) Data Science and Julia {.unnumbered}</td>
+</tr>
+<tr class="even">
+<td># Science technology and epistemology</td>
+</tr>
+<tr class="odd">
+<td>## The difference between Science and Technology</td>
+</tr>
+<tr class="even">
+<td>Anyone would agree that science and technology have a lot in common, but what are the essential differences between them? And how do they interact with each other?
+These are fundamental questions for us, and ones that most people don’t have a clear answer for.
+This leads to misconceptions about key aspects on, for example, how knowledge is created and, more generally, how the world operates.</td>
+</tr>
+<tr class="odd">
+<td>One fundamental difference between the two is that while science tries to understand the physical world in which we live, technology aims to transform it.
+So, technology has a strong practical goal and science a more intellectual one.
+A very frequent misunderstanding that is nowadays very much encouraged by academia is to think that first, one needs to acquire all of the theoretical and formal knowledge about a subject matter before being able to apply it and transform reality.
+But in reality this is not the case. The process occurs, in most cases, in the opposite way: one lives in reality, interacts with it, takes action, makes mistakes, tries again, and in that way slowly discovers how the world works.
+And then, of course, it is useful to formalize our knowledge in order to be able to transmit that learning, lay solid foundations and to continue advancing in our understanding.</td>
+</tr>
+<tr class="even">
+<td>## What is technology?</td>
+</tr>
+<tr class="odd">
+<td>Technology is the practice that allows us humans to transform reality.
+We have been doing it since the very beginning of the human era, and it is really what makes us different from other animals.</td>
+</tr>
+<tr class="even">
+<td>Technology enables us to expand our capabilities.
+From taking a long, pointy stick to reach fruit high up in a tree, to transforming an entire landscape by building a huge electric dam, to the creation of artificial intelligence that helps us solve our deepest puzzles.
+With technology we transform our experience in the world.</td>
+</tr>
+<tr class="odd">
+<td>It is evident that the more we know about the reality in which we live, the more we will be able to modify it.
+But from this idea comes a very important question: what is the order in which innovation takes place?
+Is it necessary first to have an absolute understanding of the process we are trying to modify?
+Or is technology created in a more chaotic process, through trial and error?</td>
+</tr>
+<tr class="even">
+<td>Does a child need to know the gear mechanisms of a bicycle to learn to ride it? Does Lionel Messi need to know about fluid dynamics to make the ball take a curved trajectory? Did the Romans need to know the Navier-Stokes equation in order to build their huge aqueducts?
+Knowledge is often acquired through experimentation, implementation and heuristics, in a process that involves more trial and error and less theoretical knowledge than many believe.
+And technological innovation tends to follows the same mechanism. Many breakthroughs were made by people who were taking risks, exploring, and stumbling in the dark with a destination in mind but no clear directions to get there, with theories only taking their definitive form once they arrived to a solution and were able to look back on what they had discovered.</td>
+</tr>
+<tr class="odd">
+<td>The current understanding of how knowledge is produced does not reflect how it actually happens in many cases. Having a better understanding of this process can help us do it better.
+Many people think of the innovation process as a more or less linear path that begins with theoretical discoveries, and only after formalization is achieved, practical uses are invented.
+This type of thinking is counterproductive because, being so widespread, it causes many people to be more concerned with constantly acquiring theoretical knowledge, rather than taking action and immersing themselves in practice.
+Fear of failure, of not getting it exactly right on the first try, also plays a role, perhaps encouraged by the way we tell stories about innovation.</td>
+</tr>
+<tr class="even">
+<td>By looking at the history of technology and innovation, and who writes it, we see that the people who made the discoveries are rarely the ones who write the books about them.
+As <a href="https://en.wikipedia.org/wiki/Nassim_Nicholas_Taleb">Nassim Nicholas Taleb</a> said in “The History Written by the Losers,” the people that are doing stuff don’t have time for writing.
+And perhaps because the non-practitioners are the ones who write about the findings of others, as time goes by, society ends up being convinced that there was indeed an arduous intellectual and academic work first, and then came its implementation.
+That –apparently– common sense in which knowledge is built from a purely intellectual work that can be done in the armchair at home, and that only after acquiring this sacred theoretical knowledge it is possible to come up with technology or innovation, is the one we need to question.</td>
+</tr>
+<tr class="odd">
+<td>This confusion in the order in which technological advances occur is seen constantly and in the most varied areas of the history of innovation.
+Take, for example, the development of the jet engine. It really had nothing to do with the discoveries of physicists researching, but with the cleverness and practical heuristics based on trial and error that engineers had developed, although in academic books it is stated the other way around. Or in a really practical field, finances. For years, senior traders that have been deploying several heuristics to make their trades, build portfolios that are much more complex and better performing than the ones generated by the pricing formulas that academics came up with and often didn’t stand the test of time.
+And this happened because, in the process of trying to generalize these heuristics into formal equations, the academics are constantly introducing fragility.
+That is, in the process of finding the laws that rule those dynamic systems, lot of cases are ignored, something that doesn’t happen to experienced traders.
+What cements the gap between theory and practice, is that finance PhDs then fail to understand how traders can correctly assign prices to financial derivatives without being familiar with a corpus of theorems that, to them, are indispensable to understand market dynamics.</td>
+</tr>
+<tr class="even">
+<td>In this book we will try to take you, the reader, through a journey that is more similar to the real way in which knowledge is built: an iterative, hands-on process of problem-solving that gradually builds intuitions about how things work and why, that we can later formalize.</td>
+</tr>
+<tr class="odd">
+<td>## References</td>
+</tr>
+<tr class="even">
+<td>- <a href="https://www.amazon.com/Antifragile-Things-That-Disorder-Incerto/dp/0812979680">Antifragile: Things That Gain from Disorder, ch 15 - Nassim Nicholas Taleb</a>
+- <a href="https://www.amazon.com/Infinite-Powers-Calculus-Reveals-Universe/dp/1328879984">Infinite Powers: How Calculus Reveals the Secrets of the Universe - Steven Strogatz</a>
+- <a href="https://www.amazon.com/Lost-Math-Beauty-Physics-Astray/dp/0465094252">Lost in Math: How Beauty Leads Physics Astray - Sabine Hossenfelder</a>
+- <a href="https://www.amazon.com/Joy-Guided-Tour-Math-Infinity/dp/0544105850">The Joy of X</a>
+- <a href="https://www.amazon.com/Mathematics-Content-Methods-Meaning-Volumes/dp/0486409163">Kolmogorov - Mathematics: It’s contents, method and meaning</a>
+- <a href="https://youtu.be/wxRpa-PqUfw">Freeman Dyson - Where Do the Laws of Nature Come From?</a>
+- <a href="https://youtu.be/ujvS2K06dg4">Roger Penrose - Is Mathematics Invented or Discovered?</a>
+- <a href="https://youtu.be/o9ylQC5bPpU">How to tell science from pseudoscience</a>
+- <a href="https://youtu.be/QUWbe5KGaQY">Sabine Hossenfelder - Why the ‘Unreasonable Effectiveness’ of Mathematics?</a>
+- <a href="http://www.paulgraham.com/hp.html" class="uri">http://www.paulgraham.com/hp.html</a>
+- <a href="https://en.wikipedia.org/wiki/Apophatic_theology" class="uri">https://en.wikipedia.org/wiki/Apophatic_theology</a>
+- <a href="https://en.wikipedia.org/wiki/Falsifiability" class="uri">https://en.wikipedia.org/wiki/Falsifiability</a>
+- <a href="https://norvig.com/fact-check.html" class="uri">https://norvig.com/fact-check.html</a>
+- <a href="https://www.wired.com/2008/06/pb-theory/" class="uri">https://www.wired.com/2008/06/pb-theory/</a>
+- <a href="https://fs.blog/2016/01/karl-popper-on-science-pseudoscience/" class="uri">https://fs.blog/2016/01/karl-popper-on-science-pseudoscience/</a></td>
+</tr>
+<tr class="odd">
+<td><!--chapter:end:01_science_technology_and_epistemology.Rmd--></td>
+</tr>
+</tbody>
+</table>
+<p>editor_options:
+markdown:
+wrap: sentence
+—</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="meeting-julia.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["ds-in-bookdown.pdf", "ds-in-bookdown.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

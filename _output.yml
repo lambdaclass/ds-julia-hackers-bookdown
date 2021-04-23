@@ -1,0 +1,9 @@
+bookdown::gitbook:
+  css: style.css
+  config:
+    toc:
+      before: |
+        <li><a href="./">Data Science in Julia for Hackers</a></li>
+      after: |
+        <li><a href="https://github.com/pefontana/ds-in-bookdowm" target="blank">Data Science in Julia for Hackers</a></li>
+    download: ["pdf", "epub"]
